@@ -1,10 +1,12 @@
 steps:
   build:
-    image: node:latest
+    image: woodpeckerci/plugin-node-pm
     settings:
+      pm: npm
       cmd:
         - npm install
-        - node index.js
+        - npm test
+        - npm run start
     when:
       event:
         - push
