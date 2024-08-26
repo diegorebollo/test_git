@@ -7,8 +7,6 @@ steps:
       platforms:
         - linux/amd64
       dockerfile: Dockerfile
-      build_args:
-        - NODE_ENV=production
 
   deploy:
     image: docker:dind
