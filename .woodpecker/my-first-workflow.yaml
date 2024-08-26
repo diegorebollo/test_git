@@ -1,4 +1,10 @@
 pipeline:
+  build:
+    image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker build --tag node-docker .
   deploy:
     image: docker
     volumes:
