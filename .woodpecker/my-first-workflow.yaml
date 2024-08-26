@@ -4,7 +4,7 @@ steps:
     settings:
       cmd:
         - npm install
-        - npm run start
+        - node index.js
     when:
       event:
         - push
