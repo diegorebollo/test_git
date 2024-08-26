@@ -1,10 +1,18 @@
-steps:
+pipeline:
   build:
-    image: docker
-    commands:
-      - docker build -t mi-app-node .
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      repo: mi-app-node
+      tags: latest
+      platforms:
+        - linux/amd64
+      dockerfile: Dockerfile
+      build_args:
+        - NODE_ENV=production
 
   deploy:
-    image: docker
+    image: docker:dind
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker run -d -p 5302:5302 mi-app-node
+      - docker run -d -p 5302:5302 mi-app-node:latest
