@@ -6,10 +6,9 @@ pipeline:
     commands:
       - docker build -t sampleapp:v1 .
 
-  # deploy:
-  #   image: docker/compose:latest
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   commands:
-  #     - docker-compose down --remove-orphans
-  #     - docker-compose up -d
+  deploy:
+    image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker run -p 5302:5302 sampleapp:v1
