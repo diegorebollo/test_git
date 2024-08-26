@@ -1,4 +1,4 @@
-pipeline:
+steps:
   build:
     image: codeberg.org/woodpecker-plugins/node-pm
     settings:
