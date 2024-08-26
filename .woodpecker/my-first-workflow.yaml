@@ -18,10 +18,3 @@ steps:
       event:
         - push
         - pull_request
-
-    when:
-      event:
-        - push
-        - pull_request
-
-
