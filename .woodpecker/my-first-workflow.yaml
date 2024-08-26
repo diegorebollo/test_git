@@ -5,3 +5,7 @@ steps:
       cmd:
         - npm install
         - npm run start
+    when:
+      event:
+        - push
+        - pull_request
