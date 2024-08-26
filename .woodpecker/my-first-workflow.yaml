@@ -10,4 +10,4 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker-compose up
+      - docker run node-docker
