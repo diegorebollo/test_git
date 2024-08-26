@@ -1,6 +1,8 @@
+version: "3.8"
 services:
-  server:
-    build:
-      context: .
+  app:
+    container_name: miweb
+    build: .
     ports:
       - 5302:5302
+    restart: unless-stopped
