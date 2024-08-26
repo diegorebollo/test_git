@@ -4,10 +4,10 @@ steps:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker build --tag node-docker .
+      - docker build --tag node-docker --no-cache .
   deploy:
     image: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker-compose up --detach
+      - docker-compose up --detach --force-recreate
