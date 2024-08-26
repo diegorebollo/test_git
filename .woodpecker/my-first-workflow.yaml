@@ -1,12 +1,11 @@
 steps:
   build:
-    image: woodpeckerci/plugin-docker-buildx
-    settings:
-      repo: mi-app-node
-      tags: latest
-      platforms:
-        - linux/amd64
-      dockerfile: Dockerfile
+    image: docker:dind
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker buildx create --use
+      - docker buildx build --load -t mi-app-node:latest .
 
   deploy:
     image: docker:dind
