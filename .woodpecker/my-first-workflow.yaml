@@ -1,12 +1,11 @@
 steps:
   build:
-    image: woodpeckerci/plugin-node-pm
-    settings:
-      pm: npm
-      cmd:
-        - npm install
-        - npm test
-        - npm run start
+    image: node:14
+    commands:
+      - npm install
+      - npm start &
+      - sleep 10
+      - curl http://localhost:5302
     when:
       event:
         - push
