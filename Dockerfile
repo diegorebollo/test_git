@@ -13,4 +13,4 @@ COPY . .
 
 EXPOSE 5302
 
-CMD node index.js
+CMD [ "node", "index.js" ]
