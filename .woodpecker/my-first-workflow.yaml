@@ -1,13 +1,10 @@
-steps:
+pipeline:
   build:
-    image: woodpeckerci/plugin-docker-buildx
-    settings:
-      dockerfile: Dockerfile
-      repo: mi-app-node
-      tags: latest
-      platforms:
-        - linux/amd64
-      load: true
+    image: docker/compose:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker-compose build
 
   deploy:
     image: docker/compose:latest
