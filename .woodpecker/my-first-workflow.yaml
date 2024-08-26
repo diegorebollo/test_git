@@ -1,6 +1,6 @@
 steps:
   build:
-    image: woodpeckerci/plugin-node-pm
+    image: node:latest
     settings:
       cmd:
         - npm install
