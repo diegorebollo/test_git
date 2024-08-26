@@ -1,11 +1,7 @@
 pipeline:
   build:
-    image: node:20
-    commands:
-      - npm install
-      - npm test
-
-  run:
-    image: node:20
-    commands:
-      - node app.js
+    image: woodpeckerci/plugin-node-pm
+    settings:
+      cmd:
+        - npm install
+        - npm run start
