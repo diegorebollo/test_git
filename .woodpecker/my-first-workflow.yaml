@@ -3,7 +3,7 @@ steps:
     image: codeberg.org/woodpecker-plugins/node-pm
     settings:
       run:
-        - run index.js
+        - test
       with: npm
 
 when:
