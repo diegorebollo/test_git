@@ -1,20 +1,10 @@
 steps:
   build:
-    image: node:14
+    image: docker
     commands:
-      - npm install
-      - npm start &
-      - sleep 10
-      - curl http://localhost:5302
+      - docker build -t mi-app-node .
 
   deploy:
     image: docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker build -t myapp:latest .
-      - docker run -d -p 5302:5302 myapp:latest
-    when:
-      event:
-        - push
-        - pull_request
+      - docker run -d -p 5302:5302 mi-app-node
