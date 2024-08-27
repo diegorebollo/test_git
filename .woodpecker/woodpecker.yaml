@@ -17,4 +17,5 @@ steps:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
+      - docker buildx prune -f
       - docker-compose up -d
