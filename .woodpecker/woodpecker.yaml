@@ -12,9 +12,9 @@ steps:
       platforms: linux/amd64
       auto_tag: true
 
-  # - name: deploy
-  #   image: docker
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   commands:
-  #     - docker-compose up -d
+  - name: deploy
+    image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker-compose up -d

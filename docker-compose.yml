@@ -1,6 +1,6 @@
 services:
   myapp:
-    image: ourapp:latest
+    image: miapp/backend
     container_name: myapp-container
     ports:
       - "5302:5302" 
