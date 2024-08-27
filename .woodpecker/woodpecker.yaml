@@ -3,13 +3,12 @@ when:
     branch: main
 
 steps:
-   - name: docker
-     image: docker
-     commands:
+  - name: docker
+    image: docker
+    commands:
       - echo $docker_username
       - echo $DOCKER_PASSWORD
-    secrets: [ docker_username, DOCKER_PASSWORD ]
-
+    secrets: [docker_username, DOCKER_PASSWORD]
 # steps:
 #   - name: build
 #     image: docker
