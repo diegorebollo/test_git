@@ -3,27 +3,20 @@ when:
     branch: main
 
 steps:
-  - name: docker
+  - name: build
     image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - echo $docker_username
-      - echo $$DOCKER_PASSWORD
-    secrets: [docker_username, DOCKER_PASSWORD]
-# steps:
-#   - name: build
-#     image: docker
-#     volumes:
-#       - /var/run/docker.sock:/var/run/docker.sock
-#     commands:
-#       - docker buildx build --load --platform linux/amd64 --build-arg PORT=$${PORT} -t mirepo/ourapp:latest .
-#       - docker buildx prune -f
-#     secrets: [PORT]
+      - docker buildx build --load --platform linux/amd64 --build-arg PORT=${PORT} -t mirepo/ourapp:latest .
+      - docker buildx prune -f
+    secrets: [PORT]
 
-#   - name: deploy
-#     image: docker
-#     volumes:
-#       - /var/run/docker.sock:/var/run/docker.sock
-#     commands:
-#       - docker-compose up -d
-#       - docker image prune -f
-#     secrets: [PORT]
+  - name: deploy
+    image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker-compose up -d
+      - docker image prune -f
+    secrets: [PORT]

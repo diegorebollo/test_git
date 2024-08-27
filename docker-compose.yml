@@ -1,7 +1,10 @@
 services:
   myapp:
+    environment:
+      - PORT=${PORT}
     image: mirepo/ourapp:latest
     container_name: miapp
+    
     ports:
-      - "5302:5302" 
+      - "${PORT}:${PORT}" 
     restart: unless-stopped
