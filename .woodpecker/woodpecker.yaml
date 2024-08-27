@@ -7,7 +7,7 @@ steps:
     image: woodpeckerci/plugin-docker-buildx
     settings:
       repo: miapp
-      dry-run: true
+      # dry-run: true
       dockerfile: Dockerfile
       platforms: linux/amd64
       auto_tag: true
