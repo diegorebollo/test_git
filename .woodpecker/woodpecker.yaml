@@ -4,7 +4,7 @@ when:
 
 steps:
   - name: build-docker-imagen
-    image: docker:dind
+    image: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
@@ -12,7 +12,7 @@ steps:
       - docker buildx build --load --platform linux/amd64 -t ourapp:latest .
 
   - name: deploy-docker-container
-    image: docker:dind
+    image: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
