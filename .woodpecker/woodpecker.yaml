@@ -11,6 +11,8 @@ steps:
       dockerfile: Dockerfile
       platforms: linux/amd64
       auto_tag: true
+      buildkit_args:
+        - --output type=docker
 
   - name: deploy
     image: docker
