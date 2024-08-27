@@ -4,18 +4,17 @@ when:
 
 steps:
   - name: build
-    image: docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-      - docker buildx create --use
-      - docker buildx build --load --platform linux/amd64 -t ourapp:latest .
-      - docker buildx prune -f
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      repo: miapp/backend
+      dry-run: true
+      dockerfile: Dockerfile
+      platforms: linux/amd64
+      auto_tag: true
 
-  - name: deploy
-    image: docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-      - docker buildx prune -f
-      - docker-compose up -d
+  # - name: deploy
+  #   image: docker
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   commands:
+  #     - docker-compose up -d
