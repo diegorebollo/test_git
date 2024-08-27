@@ -3,7 +3,7 @@ when:
     branch: main
 
 steps:
-  - name: build-docker-imagen
+  - name: build
     image: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -11,7 +11,7 @@ steps:
       - docker buildx create --use
       - docker buildx build --load --platform linux/amd64 -t ourapp:latest .
 
-  - name: deploy-docker-container
+  - name: deploy
     image: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
