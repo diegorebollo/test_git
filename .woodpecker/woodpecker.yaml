@@ -25,6 +25,6 @@ when:
    - name: docker
      image: docker
      commands:
-+      - echo $docker_username
-+      - echo $DOCKER_PASSWORD
-+    secrets: [ docker_username, DOCKER_PASSWORD ]
+      - echo $docker_username
+      - echo $DOCKER_PASSWORD
+    secrets: [ docker_username, DOCKER_PASSWORD ]
