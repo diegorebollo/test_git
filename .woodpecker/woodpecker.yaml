@@ -4,15 +4,13 @@ when:
 
 steps:
   - name: build
-    image: woodpeckerci/plugin-docker-buildx
-    settings:
-      repo: miapp
-      # dry-run: true
-      dockerfile: Dockerfile
-      platforms: linux/amd64
-      auto_tag: true
-      buildkit_args:
-        - --output type=docker
+    image: docker:dind
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker buildx create --use
+      - docker buildx build --load --platform linux/amd64 -t ourapp:latest .
+      - docker buildx prune -f
 
   - name: deploy
     image: docker
