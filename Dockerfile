@@ -1,4 +1,8 @@
+
+ARG PORT=5302
+
 FROM node:20.17.0-alpine
+
 
 WORKDIR /usr/src/app
 
@@ -11,6 +15,6 @@ USER node
 
 COPY . .
 
-EXPOSE 5302
+EXPOSE ${PORT}
 
 CMD [ "node", "index.js" ]

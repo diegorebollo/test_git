@@ -8,13 +8,15 @@ steps:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker buildx build --load --platform linux/amd64 -t mirepo/ourapp:latest .
+      - echo ${PORT}
+      - docker buildx build --load --platform linux/amd64 --build-arg PORT=${PORT} -t mirepo/ourapp:latest .
       - docker buildx prune -f
+    secrets: [PORT]
 
-  - name: deploy
-    image: docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-      - docker-compose up -d
-      - docker image prune -f
+  # - name: deploy
+  #   image: docker
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   commands:
+  #     - docker-compose up -d
+  #     - docker image prune -f
