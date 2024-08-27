@@ -4,3 +4,4 @@ services:
     container_name: miapp
     ports:
       - "5302:5302" 
+    restart: unless-stopped
