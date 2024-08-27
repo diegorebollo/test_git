@@ -1,6 +1,6 @@
 services:
   myapp:
-    image: ourapp:latest
+    image: mirepo/ourapp:latest
     container_name: miapp
     ports:
       - "5302:5302" 
