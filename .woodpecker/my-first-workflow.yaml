@@ -1,13 +1,10 @@
+when:
+  - event: push
+    branch: main
+
 steps:
-  build:
-    image: docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+  - name: build
+    image: docker:dind
     commands:
-      - docker build --tag node-docker --no-cache .
-  deploy:
-    image: docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-      - docker-compose up --detach --force-recreate
+      - docker buildx create --use
+      - docker buildx build --load --platform linux/amd64 -t ourapp:latest .
