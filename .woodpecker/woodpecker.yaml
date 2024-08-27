@@ -8,13 +8,12 @@ steps:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      # - docker buildx create --use
       - docker buildx build --load --platform linux/amd64 -t ourapp:latest .
       - docker buildx prune -f
 
-  - name: deploy
-    image: docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-      - docker-compose up -d
+  # - name: deploy
+  #   image: docker
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   commands:
+  #     - docker-compose up -d
