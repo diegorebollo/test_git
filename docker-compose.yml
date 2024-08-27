@@ -1,7 +1,7 @@
+version: '3'
 services:
-  app:
-    container_name: miweb
-    build: .
+  myapp:
+    image: ourapp:latest
+    container_name: myapp-container
     ports:
-      - 5302:5302
-    restart: unless-stopped
+      - "5302:5302" 

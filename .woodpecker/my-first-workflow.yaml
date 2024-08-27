@@ -3,10 +3,17 @@ when:
     branch: main
 
 steps:
-  - name: build
+  - name: build-docker-imagen
     image: docker:dind
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
       - docker buildx create --use
-      - docker buildx build --platform linux/amd64 -t ourapp:latest .
+      - docker buildx build --load --platform linux/amd64 -t ourapp:latest .
+
+  - name: deploy-docker-container
+    image: docker:dind
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker-compose up -d
